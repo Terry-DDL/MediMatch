@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Login } from '@/pages/Login';
 import { Medications } from '@/pages/Medications';
 import { AddMedication } from '@/pages/AddMedication';
+import { Chat } from '@/pages/Chat';
 import { NotFound } from '@/pages/NotFound';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -32,6 +33,7 @@ function App() {
             <Route index element={<Navigate to="/meds" replace />} />
             <Route path="meds" element={<Medications />} />
             <Route path="meds/new" element={<AddMedication />} />
+            <Route path="chat" element={<Chat />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
