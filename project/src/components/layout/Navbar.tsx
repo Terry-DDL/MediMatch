@@ -45,6 +45,15 @@ export function Navbar() {
               >
                 AI Chat
               </Link>
+              {user?.plan !== 'plus' && (
+                <Button
+                  asChild
+                  size="sm"
+                  className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700"
+                >
+                  <Link to="/subscribe">Get Plus</Link>
+                </Button>
+              )}
             </nav>
 
             <DropdownMenu>
