@@ -3,12 +3,10 @@ import { Layout } from '@/components/layout/Layout';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { Toaster } from '@/components/ui/toaster';
 import { Login } from '@/pages/Login';
-import { Dashboard } from '@/pages/Dashboard';
 import { Medications } from '@/pages/Medications';
 import { AddMedication } from '@/pages/AddMedication';
-import { Symptoms } from '@/pages/Symptoms';
-import { Alerts } from '@/pages/Alerts';
 import { NotFound } from '@/pages/NotFound';
+import { AiChat } from '@/pages/AiChat';
 import { useAuthStore } from '@/stores/authStore';
 
 function App() {
@@ -21,7 +19,7 @@ function App() {
           <Route
             path="/login"
             element={
-              isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />
+              isAuthenticated ? <Navigate to="/meds" replace /> : <Login />
             }
           />
           <Route
@@ -32,12 +30,10 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route index element={<Navigate to="/meds" replace />} />
             <Route path="meds" element={<Medications />} />
             <Route path="meds/new" element={<AddMedication />} />
-            <Route path="symptoms" element={<Symptoms />} />
-            <Route path="alerts" element={<Alerts />} />
+            <Route path="ai" element={<AiChat />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
