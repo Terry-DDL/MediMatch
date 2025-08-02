@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useAuthStore } from '@/stores/authStore';
+import type { Medication } from '@/types';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000';
 
@@ -40,7 +41,7 @@ api.interceptors.response.use(
 // Mock API functions (replace with real API calls)
 export const mockApi = {
   // Auth
-  login: async (email: string, password: string) => {
+    login: async (email: string) => {
     // Simulate API call
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -59,36 +60,11 @@ export const mockApi = {
     });
   },
 
-  addMedication: async (medication: any) => {
+    addMedication: async (medication: Medication) => {
     return new Promise((resolve) => {
       setTimeout(() => resolve({ data: medication }), 500);
     });
   },
 
-  // Symptoms
-  getSymptoms: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ data: [] }), 500);
-    });
-  },
-
-  addSymptom: async (symptom: any) => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ data: symptom }), 500);
-    });
-  },
-
-  // Alerts
-  getAlerts: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ data: [] }), 500);
-    });
-  },
-
-  // Dashboard
-  getDashboard: async () => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ data: {} }), 500);
-    });
-  },
+  // Placeholder for additional features
 };
