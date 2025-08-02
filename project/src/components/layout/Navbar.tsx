@@ -45,11 +45,19 @@ export function Navbar() {
               >
                 AI Chat
               </Link>
+              {user?.plan !== 'plus' && (
+                <Link
+                  to="/get-plus"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-colors"
+                >
+                  Get Plus
+                </Link>
+              )}
             </nav>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
+                <Button
                   variant="ghost" 
                   size="sm"
                   className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 hover:text-white"
