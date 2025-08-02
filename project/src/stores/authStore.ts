@@ -8,6 +8,8 @@ interface AuthState {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  upgradeToPlus: () => Promise<void>;
+  applyPlus: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -23,6 +25,7 @@ export const useAuthStore = create<AuthState>()(
             id: '1',
             email,
             name: email.split('@')[0],
+            plan: 'free',
           };
           const mockToken = 'mock-jwt-token-' + Date.now();
           
@@ -41,6 +44,24 @@ export const useAuthStore = create<AuthState>()(
           token: null,
           isAuthenticated: false,
         });
+      },
+      upgradeToPlus: async () => {
+        try {
+          const res = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+          });
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          }
+        } catch (err) {
+          console.error('Upgrade failed', err);
+        }
+      },
+      applyPlus: () => {
+        set((state) => ({
+          user: state.user ? { ...state.user, plan: 'plus' } : null,
+        }));
       },
     }),
     {
