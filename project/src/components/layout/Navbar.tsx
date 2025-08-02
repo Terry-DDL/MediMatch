@@ -23,7 +23,7 @@ export function Navbar() {
       <div className="w-full px-6 lg:px-12">
         <div className="flex h-16 justify-between">
           <div className="flex items-center">
-            <Link to="/dashboard" className="flex items-center space-x-2">
+            <Link to="/meds" className="flex items-center space-x-2">
               <Pill className="h-8 w-8 text-blue-600" />
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 MediMatch
@@ -34,28 +34,10 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <nav className="flex space-x-4">
               <Link
-                to="/dashboard"
-                className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Dashboard
-              </Link>
-              <Link
                 to="/meds"
                 className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               >
                 Medications
-              </Link>
-              <Link
-                to="/symptoms"
-                className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Symptoms
-              </Link>
-              <Link
-                to="/alerts"
-                className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Alerts
               </Link>
             </nav>
 

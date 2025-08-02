@@ -17,7 +17,7 @@ export function Login() {
   const location = useLocation();
   const { toast } = useToast();
 
-  const from = location.state?.from?.pathname || '/dashboard';
+  const from = location.state?.from?.pathname || '/meds';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ export function Login() {
     try {
       await login(email, password);
       navigate(from, { replace: true });
-    } catch (error) {
+    } catch {
       toast({
         title: 'Login Failed',
         description: 'Invalid email or password',
@@ -114,8 +114,6 @@ export function Login() {
               <ul className="text-xs text-blue-800 space-y-1">
                 <li>• Track medications with dosage and timing</li>
                 <li>• Detect dangerous drug interactions</li>
-                <li>• Monitor side effects and symptoms</li>
-                <li>• Receive intelligent health alerts</li>
                 <li>• Connect with medical databases</li>
               </ul>
             </div>
