@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { useAuthStore } from '@/stores/authStore';
 
 interface Message {
   role: 'user' | 'bot';
@@ -9,8 +10,30 @@ interface Message {
 }
 
 export function Chat() {
+  const { user, upgradeToPlus } = useAuthStore();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
+
+  if (user?.plan !== 'plus') {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">AI Assistant</h1>
+          <p className="mt-2 text-gray-600">
+            Upgrade to Plus to chat with our AI assistant
+          </p>
+        </div>
+        <Card>
+          <CardContent className="flex flex-col items-center space-y-4">
+            <p className="text-center text-gray-700">
+              This feature is available for Plus subscribers.
+            </p>
+            <Button onClick={() => upgradeToPlus()}>Upgrade to Plus</Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   const sendMessage = () => {
     if (!input.trim()) return;
