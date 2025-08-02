@@ -32,7 +32,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <nav className="flex space-x-4">
+            <nav aria-label="Primary" className="flex space-x-4">
               <Link
                 to="/meds"
                 className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
