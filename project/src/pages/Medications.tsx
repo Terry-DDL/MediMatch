@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -26,11 +25,9 @@ import { Plus, Trash2, Pill } from 'lucide-react';
 
 export function Medications() {
   const { medications, deleteMedication } = useMedicationStore();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const handleDelete = (id: string) => {
     deleteMedication(id);
-    setDeletingId(null);
   };
 
   return (
