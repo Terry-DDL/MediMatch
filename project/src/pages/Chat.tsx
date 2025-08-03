@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -11,7 +10,7 @@ interface Message {
 }
 
 export function Chat() {
-  const { user } = useAuthStore();
+  const { user, upgradeToPlus } = useAuthStore();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
 
@@ -29,9 +28,7 @@ export function Chat() {
             <p className="text-center text-gray-700">
               This feature is available for Plus subscribers.
             </p>
-            <Button asChild>
-              <Link to="/subscribe">Upgrade to Plus</Link>
-            </Button>
+            <Button onClick={upgradeToPlus}>Upgrade to Plus</Button>
           </CardContent>
         </Card>
       </div>

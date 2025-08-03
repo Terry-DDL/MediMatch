@@ -12,7 +12,7 @@ export function Subscribe() {
         <p className="text-lg">Compare Free and Plus options</p>
       </div>
       <div className="max-w-4xl mx-auto grid gap-8 md:grid-cols-2">
-        <Card className="shadow-lg flex flex-col">
+        <Card className="shadow-lg flex flex-col h-96">
           <CardHeader>
             <CardTitle className="text-center">Free Plan</CardTitle>
           </CardHeader>
@@ -21,7 +21,7 @@ export function Subscribe() {
             <p className="text-2xl font-bold">$0</p>
           </CardContent>
         </Card>
-        <Card className="shadow-lg bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-white flex flex-col">
+        <Card className="shadow-lg bg-gradient-to-br from-blue-500 via-purple-500 to-purple-700 text-white flex flex-col h-96">
           <CardHeader>
             <CardTitle className="text-center">Plus Plan</CardTitle>
           </CardHeader>
@@ -29,7 +29,7 @@ export function Subscribe() {
             <p className="flex-1">Access to AI Assistant chat and future premium updates.</p>
             <Button
               size="sm"
-              className="bg-white text-yellow-700 hover:bg-gray-100"
+              className="bg-white text-purple-700 hover:bg-gray-100"
               onClick={() => upgradeToPlus()}
             >
               Subscribe for $9.99/month
