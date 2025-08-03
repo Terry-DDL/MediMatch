@@ -5,7 +5,14 @@ This project includes a React frontend and a minimal Node.js backend that uses S
 ## Running the backend
 
 1. Install dependencies with `npm install`.
-2. Set the environment variables `STRIPE_SECRET_KEY` and `STRIPE_PRICE_ID`.
+2. The server uses Stripe test credentials by default:
+
+   ```bash
+   STRIPE_SECRET_KEY=sk_test_51RrpqPIyxj79XoSA3wvkOQpgbTUCjzmr8BYkkIP4LvezmnKIrSxo8vzsTPaEG4IRS9rFDqAGFeZkDGfTsuort6O800NX7i5ta8
+   STRIPE_PRICE_ID=price_1RrqmAIyxj79XoSAWERvedqI
+   ```
+
+   You can override these by setting `STRIPE_SECRET_KEY` and `STRIPE_PRICE_ID` in your environment.
 3. From the project root, start the server:
 
    ```bash
