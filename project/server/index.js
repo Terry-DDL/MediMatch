@@ -1,5 +1,15 @@
 import http from 'http';
 
+// Load Stripe credentials from environment variables or fall back to provided
+// test keys. This ensures the server uses real Stripe data instead of mock
+// placeholders when creating checkout sessions.
+const STRIPE_SECRET_KEY =
+  process.env.STRIPE_SECRET_KEY ||
+  'sk_test_51RrpqPIyxj79XoSA3wvkOQpgbTUCjzmr8BYkkIP4LvezmnKIrSxo8vzsTPaEG4IRS9rFDqAGFeZkDGfTsuort6O800NX7i5ta8';
+const PRICE_ID =
+  process.env.STRIPE_PRICE_ID ||
+  'price_1RrqmAIyxj79XoSAWERvedqI';
+
 /**
  * Minimal HTTP server used by the frontend to initiate Stripe Checkout.
  * Expects the following environment variables:
@@ -8,8 +18,6 @@ import http from 'http';
  *  - CLIENT_URL: base URL of the frontend application
  */
 const PORT = process.env.PORT || 3000;
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
-const PRICE_ID = process.env.STRIPE_PRICE_ID;
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
 if (!STRIPE_SECRET_KEY || !PRICE_ID) {
