@@ -33,7 +33,7 @@ export function Pricing() {
             </ul>
           </CardContent>
           <CardFooter>
-            <Button className="w-full" variant="outline" disabled>
+            <Button className="w-full h-10" variant="outline" size="lg" disabled>
               Current Plan
             </Button>
           </CardFooter>
@@ -62,9 +62,12 @@ export function Pricing() {
           <CardFooter>
             <Button
               asChild
-              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
+              size="lg"
+              className="w-full h-10 bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
             >
-              <Link to="/subscribe">Get Plus</Link>
+              <Link to="/subscribe" className="w-full">
+                Get Plus
+              </Link>
             </Button>
           </CardFooter>
         </Card>
