@@ -10,7 +10,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { Pill, User, LogOut } from 'lucide-react';
 
 export function Navbar() {
-  const { user, logout } = useAuthStore();
+  const { user, logout, upgradeToPlus } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -47,11 +47,11 @@ export function Navbar() {
               </Link>
               {user?.plan !== 'plus' && (
                 <Button
-                  asChild
                   size="sm"
-                  className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white hover:from-yellow-500 hover:to-yellow-700"
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
+                  onClick={upgradeToPlus}
                 >
-                  <Link to="/subscribe">Get Plus</Link>
+                  Get Plus
                 </Button>
               )}
             </nav>
