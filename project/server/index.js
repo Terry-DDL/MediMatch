@@ -1,9 +1,20 @@
 import http from 'http';
 
+/**
+ * Minimal HTTP server used by the frontend to initiate Stripe Checkout.
+ * Expects the following environment variables:
+ *  - STRIPE_SECRET_KEY: secret API key from Stripe dashboard
+ *  - STRIPE_PRICE_ID: price identifier for the Plus subscription
+ *  - CLIENT_URL: base URL of the frontend application
+ */
 const PORT = process.env.PORT || 3000;
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder';
-const PRICE_ID = process.env.STRIPE_PRICE_ID || 'price_placeholder';
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const PRICE_ID = process.env.STRIPE_PRICE_ID;
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+
+if (!STRIPE_SECRET_KEY || !PRICE_ID) {
+  throw new Error('Stripe configuration is missing. Set STRIPE_SECRET_KEY and STRIPE_PRICE_ID.');
+}
 
 const server = http.createServer(async (req, res) => {
   if (req.method === 'POST' && req.url === '/api/create-checkout-session') {
