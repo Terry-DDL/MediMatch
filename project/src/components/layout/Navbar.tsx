@@ -46,11 +46,17 @@ export function Navbar() {
                 AI Chat
               </Link>
             </nav>
+            <Button
+              asChild
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600"
+            >
+              <Link to="/pricing">Get Plus</Link>
+            </Button>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="ghost" 
+                <Button
+                  variant="ghost"
                   size="sm"
                   className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 hover:text-white"
                 >

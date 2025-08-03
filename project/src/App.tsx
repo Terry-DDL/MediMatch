@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { ProtectedRoute } from '@/components/auth/ProtectedRoute';
 import { Toaster } from '@/components/ui/toaster';
@@ -7,6 +12,7 @@ import { Medications } from '@/pages/Medications';
 import { AddMedication } from '@/pages/AddMedication';
 import { Chat } from '@/pages/Chat';
 import { NotFound } from '@/pages/NotFound';
+import { Pricing } from '@/pages/Pricing';
 import { useAuthStore } from '@/stores/authStore';
 
 function App() {
@@ -34,6 +40,7 @@ function App() {
             <Route path="meds" element={<Medications />} />
             <Route path="meds/new" element={<AddMedication />} />
             <Route path="chat" element={<Chat />} />
+            <Route path="pricing" element={<Pricing />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
