@@ -13,6 +13,7 @@ import { AddMedication } from '@/pages/AddMedication';
 import { Chat } from '@/pages/Chat';
 import { NotFound } from '@/pages/NotFound';
 import { Pricing } from '@/pages/Pricing';
+import { Subscribe } from '@/pages/Subscribe';
 import { useAuthStore } from '@/stores/authStore';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="meds/new" element={<AddMedication />} />
             <Route path="chat" element={<Chat />} />
             <Route path="pricing" element={<Pricing />} />
+            <Route path="subscribe" element={<Subscribe />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

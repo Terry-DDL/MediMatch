@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardHeader,
@@ -59,8 +60,11 @@ export function Pricing() {
             </ul>
           </CardContent>
           <CardFooter>
-            <Button className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600">
-              Get Plus
+            <Button
+              asChild
+              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600"
+            >
+              <Link to="/subscribe">Get Plus</Link>
             </Button>
           </CardFooter>
         </Card>
