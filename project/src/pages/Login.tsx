@@ -35,10 +35,11 @@ export function Login() {
     try {
       await login(email, password);
       navigate(from, { replace: true });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: 'Login Failed',
-        description: error.message || 'Invalid email or password',
+        description:
+          error instanceof Error ? error.message : 'Invalid email or password',
         variant: 'destructive',
       });
     } finally {
@@ -51,10 +52,13 @@ export function Login() {
     try {
       await loginWithGoogle();
       navigate(from, { replace: true });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: 'Google Login Failed',
-        description: error.message || 'Failed to sign in with Google',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Failed to sign in with Google',
         variant: 'destructive',
       });
     } finally {

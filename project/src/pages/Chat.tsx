@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { talk } from '@/lib/gemini';
 
 interface Message {
   role: 'user' | 'bot';
@@ -12,21 +13,22 @@ export function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const newMessage: Message = { role: 'user', content: input };
+    const message = input;
+    const newMessage: Message = { role: 'user', content: message };
     setMessages((prev) => [...prev, newMessage]);
-
-    // Placeholder for backend integration
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { role: 'bot', content: 'This is a placeholder response.' },
-      ]);
-    }, 500);
-
     setInput('');
+
+    try {
+      const reply = await talk(message);
+      setMessages((prev) => [...prev, { role: 'bot', content: reply }]);
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : 'Failed to fetch response.';
+      setMessages((prev) => [...prev, { role: 'bot', content: errorMessage }]);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

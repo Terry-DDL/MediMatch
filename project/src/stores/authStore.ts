@@ -33,7 +33,7 @@ const convertFirebaseUser = (firebaseUser: FirebaseUser): User => ({
 
 export const useAuthStore = create<AuthState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
       token: null,
       isAuthenticated: false,
@@ -52,9 +52,10 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error('Login error:', error);
-          throw new Error(error.message || 'Login failed');
+          const message = error instanceof Error ? error.message : 'Login failed';
+          throw new Error(message);
         }
       },
 
@@ -71,9 +72,10 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error('Google login error:', error);
-          throw new Error(error.message || 'Google login failed');
+          const message = error instanceof Error ? error.message : 'Google login failed';
+          throw new Error(message);
         }
       },
 
@@ -90,9 +92,10 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: true,
             isLoading: false,
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error('Registration error:', error);
-          throw new Error(error.message || 'Registration failed');
+          const message = error instanceof Error ? error.message : 'Registration failed';
+          throw new Error(message);
         }
       },
 
@@ -106,9 +109,10 @@ export const useAuthStore = create<AuthState>()(
             isAuthenticated: false,
             isLoading: false,
           });
-        } catch (error: any) {
+        } catch (error: unknown) {
           console.error('Logout error:', error);
-          throw new Error(error.message || 'Logout failed');
+          const message = error instanceof Error ? error.message : 'Logout failed';
+          throw new Error(message);
         }
       },
 
