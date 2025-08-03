@@ -7,9 +7,6 @@ import { Medications } from '@/pages/Medications';
 import { AddMedication } from '@/pages/AddMedication';
 import { Chat } from '@/pages/Chat';
 import { NotFound } from '@/pages/NotFound';
-import { SubscribeSuccess } from '@/pages/SubscribeSuccess';
-import { SubscribeCancel } from '@/pages/SubscribeCancel';
-import { Subscribe } from '@/pages/Subscribe';
 import { useAuthStore } from '@/stores/authStore';
 
 function App() {
@@ -37,9 +34,6 @@ function App() {
             <Route path="meds" element={<Medications />} />
             <Route path="meds/new" element={<AddMedication />} />
             <Route path="chat" element={<Chat />} />
-            <Route path="subscribe" element={<Subscribe />} />
-            <Route path="subscribe/success" element={<SubscribeSuccess />} />
-            <Route path="subscribe/cancel" element={<SubscribeCancel />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

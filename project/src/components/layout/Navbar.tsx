@@ -10,7 +10,7 @@ import { useAuthStore } from '@/stores/authStore';
 import { Pill, User, LogOut } from 'lucide-react';
 
 export function Navbar() {
-  const { user, logout, upgradeToPlus } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -45,15 +45,6 @@ export function Navbar() {
               >
                 AI Chat
               </Link>
-              {user?.plan !== 'plus' && (
-                <Button
-                  size="sm"
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
-                  onClick={upgradeToPlus}
-                >
-                  Get Plus
-                </Button>
-              )}
             </nav>
 
             <DropdownMenu>
